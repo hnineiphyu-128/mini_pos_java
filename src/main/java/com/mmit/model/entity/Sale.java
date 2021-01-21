@@ -14,7 +14,7 @@ import static javax.persistence.CascadeType.PERSIST;
  */
 @Entity
 @Table(name = "sales")
-@NamedQuery(name = "Sale.getAll", query = "SELECT s FROM Sale s")
+@NamedQuery(name = "Sale.getAll", query = "SELECT s FROM Sale s ORDER BY s.sale_date DESC")
 public class Sale implements Serializable {
 
 	   

@@ -57,14 +57,18 @@ public class SaleController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String path = req.getServletPath();
-		if ("/sales".equals(path)) {
-			List<Sale> list = saleService.findAll();
+		if ("/sale-detail".equals(path)) {
+			getSaleDetail(req,resp);
+		}else if ("/sales".equals(path) || "/search".equals(path)) {
 			
+			String from = req.getParameter("from");
+			String to = req.getParameter("to");
+			List<Sale> list = saleService.search(from,to);
+				
 			req.setAttribute("sales", list);
 			getServletContext().getRequestDispatcher("/sale-history.jsp").forward(req, resp);
-		}else if ("/sale-detail".equals(path)) {
-			getSaleDetail(req,resp);
 		}
+		
 		
 	}
 	
@@ -99,13 +103,7 @@ public class SaleController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String path = req.getServletPath();
-		if ("".equals(path)) {
-			
-			String from = req.getParameter("from");
-			String to = req.getParameter("to");
-			
-		}
+		
 		
 	}
 

@@ -51,10 +51,10 @@
 						</tr>
 					</thead>
 					<tbody id="table">
-					
+						<% int i =0; %>
 						<c:forEach items="${sales}" var="s">
 							<tr>
-								<td>${s.id}</td>
+								<td><%= i = i+1 %></td>
 								<td>${s.sale_date}</td>
 								<td>${s.totalQty}</td>
 								<td>${s.tax}</td>
